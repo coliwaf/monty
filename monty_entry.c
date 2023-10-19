@@ -114,6 +114,7 @@ void (*get_opc_f(char *opcode))(stack_t**, unsigned int)
 	instruction_t opc_funcs[] = {
 		{"push", mnt_push},
 		{"pall", mnt_pall},
+		{"pint", mnt_pint},
 		{NULL, NULL}
 	};
 	int i;

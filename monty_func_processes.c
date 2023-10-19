@@ -74,3 +74,21 @@ void mnt_pall(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 }
+
+/**
+ * mnt_pint - prints top unit of stack_t list
+ * @stack: the top most node in the list
+ * @line_number: current working line in code
+ */
+void mnt_pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp =  (*stack)->next;
+
+	if (temp == NULL)
+	{
+		set_token_error(stderr_pint(line_number));
+		return;
+	}
+
+	printf("%d\n", temp->n);
+}
