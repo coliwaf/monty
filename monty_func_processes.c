@@ -76,7 +76,7 @@ void mnt_pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mnt_pint - prints top unit of stack_t list
+ * mnt_pint - prints top element of stack_t list
  * @stack: the top most node in the list
  * @line_number: current working line in code
  */
@@ -91,4 +91,25 @@ void mnt_pint(stack_t **stack, unsigned int line_number)
 	}
 
 	printf("%d\n", temp->n);
+}
+
+/**
+ * mnt_pop - removes top element of stack_t list
+ * @stack: the top most element pointer
+ * @line_number: current execution working line in code
+ */
+void mnt_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (temp == NULL)
+	{
+		set_token_error(stderr_pop(line_number));
+		return;
+	}
+
+	*stack = temp->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
 }

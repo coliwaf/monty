@@ -115,6 +115,7 @@ void (*get_opc_f(char *opcode))(stack_t**, unsigned int)
 		{"push", mnt_push},
 		{"pall", mnt_pall},
 		{"pint", mnt_pint},
+		{"pop", mnt_pop},
 		{NULL, NULL}
 	};
 	int i;
