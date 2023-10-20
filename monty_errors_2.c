@@ -34,3 +34,14 @@ int stderr_short_stack(unsigned int line_number, char *identifier)
 	fprintf(stderr, "L%u: can't %s, stack too short\n", line_number, identifier);
 	return (EXIT_FAILURE);
 }
+
+/**
+ * stderr_div - prints errors occuring from the division process
+ * @line_number: line number that the interaction occurs
+ * Return: EXIT_FAILURE
+ */
+int stderr_div(unsigned int line_number)
+{
+	fprintf(stderr, "L%u: division by zero\n", line_number);
+	return (EXIT_FAILURE);
+}

@@ -48,3 +48,27 @@ void mnt_sub(stack_t **stack, unsigned int line_number)
 	curr->next->n -= curr->n;
 	mnt_pop(stack, line_number);
 }
+
+/**
+ * mnt_div - divides the top two elements of stack_t list
+ * @stack: top most elent's pointer
+ * @line_number: current execution's working line in bytecode
+ */
+void mnt_div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *curr = (*stack)->next;
+
+	if (curr == NULL || curr->next == NULL)
+	{
+		set_token_error(stderr_short_stack(line_number, "div"));
+		return;
+	}
+	if(curr->n == 0)
+	{
+		set_token_error(stderr_div(line_number));
+		return;
+	}
+
+	curr->next->n /= curr->n;
+	mnt_pop(stack, line_number);
+}

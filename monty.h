@@ -66,6 +66,7 @@ int int_missing(unsigned int line_number);
 int stderr_pint(unsigned int line_number);
 int stderr_pop(unsigned int line_number);
 int stderr_short_stack(unsigned int line_number, char *identifier);
+int stderr_div(unsigned int line_number);
 
 /* custon std library functions */
 char **strtow(char *str, char *delims);
@@ -87,6 +88,7 @@ void mnt_swap(stack_t **stack, unsigned int line_number);
 void mnt_add(stack_t **stack, unsigned int line_number);
 void mnt_nop(stack_t **stack, unsigned int line_number);
 void mnt_sub(stack_t **stack, unsigned int line_number);
+void mnt_div(stack_t **stack, unsigned int line_number);
 
 void fill_numb_base_buffer(unsigned int num, unsigned int base,char *buff, int buff_size);
 
