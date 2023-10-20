@@ -86,6 +86,7 @@ void mnt_pop(stack_t **stack, unsigned int line_number);
 void mnt_swap(stack_t **stack, unsigned int line_number);
 void mnt_add(stack_t **stack, unsigned int line_number);
 void mnt_nop(stack_t **stack, unsigned int line_number);
+void mnt_sub(stack_t **stack, unsigned int line_number);
 
 void fill_numb_base_buffer(unsigned int num, unsigned int base,char *buff, int buff_size);
 
