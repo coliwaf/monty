@@ -113,3 +113,29 @@ void mnt_pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(temp);
 }
+
+/**
+ * mnt_swap - swaps top two elements of stack_t list
+ * @stack: top most element pointer
+ * @line_number: current execution working line in the code
+ */
+void mnt_swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *stck;
+
+	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
+		set_token_error(stderr_short_stack(line_number, "swap"));
+		return;
+	}
+
+	stck = (*stack)->next->next;
+	(*stack)->next->next = stck->next;
+	(*stack)->next->prev = stck;
+	
+	if (stck->next)
+		stck->next->prev = (*stack)->next;
+	stck->next = (*stack)->next;
+	stck->prev = *stack;
+	(*stack)->next = stck;
+}

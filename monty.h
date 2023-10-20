@@ -65,6 +65,7 @@ void set_token_error(int code);
 int int_missing(unsigned int line_number);
 int stderr_pint(unsigned int line_number);
 int stderr_pop(unsigned int line_number);
+int stderr_short_stack(unsigned int line_number, char *identifier);
 
 /* custon std library functions */
 char **strtow(char *str, char *delims);
@@ -82,6 +83,7 @@ void mnt_push(stack_t **stack, unsigned int line_number);
 void mnt_pall(stack_t **stack, unsigned int line_number);
 void mnt_pint(stack_t **stack, unsigned int line_number);
 void mnt_pop(stack_t **stack, unsigned int line_number);
+void mnt_swap(stack_t **stack, unsigned int line_number);
 
 void fill_numb_base_buffer(unsigned int num, unsigned int base,char *buff, int buff_size);
 
