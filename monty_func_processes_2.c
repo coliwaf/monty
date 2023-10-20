@@ -56,19 +56,17 @@ void mnt_sub(stack_t **stack, unsigned int line_number)
  */
 void mnt_div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *curr = (*stack)->next;
-
-	if (curr == NULL || curr->next == NULL)
+	if ((*stack)->next->next == NULL || (*stack)->next == NULL)
 	{
 		set_token_error(stderr_short_stack(line_number, "div"));
 		return;
 	}
-	if(curr->n == 0)
+	if((*stack)->next->n == 0)
 	{
 		set_token_error(stderr_div(line_number));
 		return;
 	}
 
-	curr->next->n /= curr->n;
+	(*stack)->next->next->n /= (*stack)->next->n;
 	mnt_pop(stack, line_number);
 }

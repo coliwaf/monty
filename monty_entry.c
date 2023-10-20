@@ -120,6 +120,7 @@ void (*get_opc_f(char *opcode))(stack_t**, unsigned int)
 		{"add", mnt_add},
 		{"nop", mnt_nop},
 		{"sub", mnt_sub},
+		{"div", mnt_div},
 		{NULL, NULL}
 	};
 	int i;
