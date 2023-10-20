@@ -18,3 +18,14 @@ void mnt_add(stack_t **stack, unsigned int line_number)
 	curr->next->n += curr->n;
 	mnt_pop(stack, line_number);
 }
+
+/**
+ * mnt_nop - function prints nothing and does nothing
+ * @stack: topmost element's pointer
+ * @line_number: current excecution line in the code
+ */
+void mnt_nop(__attribute__((unused))stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
+{
+	;
+}
