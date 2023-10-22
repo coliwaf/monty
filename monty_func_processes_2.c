@@ -68,3 +68,23 @@ void mnt_div(stack_t **stack, unsigned int line_number)
 	(*stack)->next->next->n /= (*stack)->next->n;
 	mnt_pop(stack, line_number);
 }
+/**
+ * mnt_mul - multiplies top two elements of a stack_t list
+ * @stack: top most element's pointer
+ * @line: current point of execution in bytecode file
+ */
+void mnt_mul(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if(stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		set_token_error(stderr_short_stack(line_number, "mul"));
+		return;
+	}
+
+	temp = (*stack)->n;
+	/* (*stack)->next->next->n *= (*stack)->next->n;*/
+	(*stack)->n *= temp;
+	mnt_pop(stack, line_number);
+}
