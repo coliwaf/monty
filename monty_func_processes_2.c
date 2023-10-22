@@ -37,15 +37,17 @@ void mnt_nop(__attribute__((unused))stack_t **stack,
  */
 void mnt_sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *curr;
+	int calc;
 	
-	if (*stack == NULL || *stack->next == NULL)
+	if (stack == NULL || *stack == NULL || *stack->next == NULL)
 	{
 		set_token_error(stderr_short_stack(line_number, "sub"));
 		return;
 	}
-
-	(*stack)->next->next->n -= curr->n;
+	
+	(*stack) = (*stack)->next;
+	calc = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = calc;
 	mnt_pop(stack, line_number);
 }
 
