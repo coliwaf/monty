@@ -37,14 +37,32 @@ void mnt_nop(__attribute__((unused))stack_t **stack,
  */
 void mnt_sub(stack_t **stack, unsigned int line_number)
 {
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	stack_t *new = *stack;
+	int calc = 0, i = 0;
+
+	if (new == NULL)
+	{
+		set_token_error(stderr_short_stack(line_number, "sub"));
+		return;
+	}
+	while (new)
+	{
+		new = new->next;
+		i++;
+	}
+
+	if (stack == NULL || (*stack)->next == NULL || i <= 1)
 	{
 		set_token_error(stderr_short_stack(line_number, "sub"));
 		return;
 	}
 	
-	(*stack)->next->next->n -= (*stack)->next->n;
+	calc = (*stack)->next->n - (*stack)->n;
+	/*(*stack)->n = calc;*/
+	/*(*stack)->next->next->n -= (*stack)->next->n;*/
 	mnt_pop(stack, line_number);
+
+	(*stack)->n = calc;
 }
 
 /**
@@ -75,16 +93,18 @@ void mnt_div(stack_t **stack, unsigned int line_number)
  */
 void mnt_mul(stack_t **stack, unsigned int line_number)
 {
-	int temp;
+	stack_t *copy = NULL;
+
+	copy = *stack;
 
 	if(stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		set_token_error(stderr_short_stack(line_number, "mul"));
 		return;
 	}
-
-	temp = (*stack)->n;
-	/* (*stack)->next->next->n *= (*stack)->next->n;*/
-	(*stack)->n *= temp;
+	
+	copy = (*stack)->next;
+	copy->n *= (*stack)->n;
+	/*(*stack)->next->next->n *= (*stack)->next->n;*/
 	mnt_pop(stack, line_number);
 }

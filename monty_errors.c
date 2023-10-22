@@ -52,6 +52,6 @@ int stderr_malloc(void)
  */
 int int_missing(unsigned int line_number)
 {
-	fprintf(stderr, "L%u: usage: push integer \n", line_number);
+	fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	return (EXIT_FAILURE);
 }
