@@ -39,7 +39,7 @@ void mnt_sub(stack_t **stack, unsigned int line_number)
 {
 	int calc;
 	
-	if (stack == NULL || *stack == NULL || *stack->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		set_token_error(stderr_short_stack(line_number, "sub"));
 		return;
